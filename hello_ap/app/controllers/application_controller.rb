@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
     str1 = "現在の時刻は"
     str2 = "ではないような…"
     str3 = str1 + t.strftime("現在時刻 %H時 %M分 %S秒") + str2
+    jisa = Time.now.utc_offset
     render html:  str3 
     
   end
