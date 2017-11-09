@@ -931,3 +931,64 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 259ms (Views: 244.7ms | ActiveRecord: 0.7ms)
 
 
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/" for 127.0.0.1 at 2017-11-10 00:51:25 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 279ms (Views: 263.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-11-10 00:51:27 +0900
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (24.3ms)
+  Rendered users/new.html.erb within layouts/application (26.1ms)
+Completed 200 OK in 50ms (Views: 47.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-11-10 00:51:34 +0900
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ied9eXqjS8UMYvtfyw6k5Cyq2H7KS4ypMc9eqaL3wwX5WiFfKGEYxRiCc8Edmt/PaQ9ALNCKNLLdb0YR6AeIdA==", "user"=>{"name"=>"test", "email"=>"test"}, "commit"=>"Create User"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "test"], ["email", "test"], ["created_at", "2017-11-09 15:51:34.359691"], ["updated_at", "2017-11-09 15:51:34.359691"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/4
+Completed 302 Found in 5ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/users/4" for 127.0.0.1 at 2017-11-10 00:51:34 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mMicropost Load (0.4ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."user_id" = ? ORDER BY "microposts"."id" ASC LIMIT ?[0m  [["user_id", 4], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (26.8ms)
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 1.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `content' for nil:NilClass):
+    12: 
+    13: <p>
+    14:   <strong>microposts:</strong>
+    15:   <% if @user.microposts.first.content != null %>
+    16:     <%= @user.microposts.first.content %>
+    17:   <% end %>
+    18: </p>
+  
+app/views/users/show.html.erb:15:in `_app_views_users_show_html_erb___19390799428426037_70245689445940'
+  Rendering /Users/hiyoriyuuki/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/hiyoriyuuki/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hiyoriyuuki/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.1ms)
+  Rendering /Users/hiyoriyuuki/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hiyoriyuuki/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /Users/hiyoriyuuki/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hiyoriyuuki/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/hiyoriyuuki/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (82.0ms)
