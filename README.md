@@ -1,7 +1,24 @@
-#### <i class="icon-file"></i>個人の予定を管理するアプリケーション
+# README
 
-> **進め方**
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-> - 当番制(1週間交代)
-> - ただしゴリゴリ進めたければ無視しても可 
+Things you may want to cover:
 
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
